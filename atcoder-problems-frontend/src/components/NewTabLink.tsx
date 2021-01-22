@@ -9,7 +9,7 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 export const NewTabLink: React.FC<Props> = (props) => (
   <a
     href={props.href}
-    rel="noopener"
+    rel="noopener noreferrer"
     // Don't add rel="noreferrer" to AtCoder links
     // to allow AtCoder get the referral information.
     // eslint-disable-next-line react/jsx-no-target-blank
