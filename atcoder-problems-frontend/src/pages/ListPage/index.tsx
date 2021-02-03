@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   DropdownItem,
   DropdownMenu,
@@ -35,9 +35,14 @@ import {
   ProgressResetList,
   UserResponse,
 } from "../Internal/types";
+// import { useLocalStorage } from "../../utils/LocalStorage";
+import { ColorMode } from "../../utils/TableColor";
+
 import { ListTable, StatusFilter, statusFilters } from "./ListTable";
 import { DifficultyTable } from "./DifficultyTable";
 import { SmallTable } from "./SmallTable";
+
+import { Languagebutton } from "./Languagebutton";
 
 export const INF_POINT = 1e18;
 
@@ -268,8 +273,29 @@ const InnerListPage: React.FC<InnerProps> = (props) => {
     }))
     .toList();
 
+  // const [colorMode, setColorMode] = useLocalStorage(
+  //   "colorMode",
+  //   ColorMode.None
+  // );
+  const colorMode = ColorMode.None;
+  const [selectedLanguages, setSelectedLanguages] = useState(Set<string>());
+  const lang = Set<string>(["Python (3.8.2)", "Python (3.8.2)"]);
+
   return (
     <div>
+      <Languagebutton
+        tmp="foo"
+        colorMode={colorMode}
+        selectableLanguages={lang}
+        selectedLanguages={selectedLanguages}
+        toggleLanguage={(language): void =>
+          setSelectedLanguages(
+            selectedLanguages.has(language)
+              ? selectedLanguages.delete(language)
+              : selectedLanguages.add(language)
+          )
+        }
+      />
       <Row className="my-2 border-bottom">
         <h1>Point Status</h1>
       </Row>

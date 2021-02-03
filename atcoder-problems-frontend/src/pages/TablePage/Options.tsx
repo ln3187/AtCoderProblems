@@ -31,6 +31,7 @@ interface Props {
 }
 
 export const Options: React.FC<Props> = (props) => {
+  console.log(props.selectableLanguages);
   return (
     <>
       <Row className="my-4">

@@ -119,6 +119,7 @@ export const statusToTableColor = ({
           selectedLanguages.has(solvedLanguage)
         )
       ) {
+        console.log(TableColor.SuccessLanguage);
         return TableColor.SuccessLanguage;
       } else {
         return statusLabelToTableColor(status.label);

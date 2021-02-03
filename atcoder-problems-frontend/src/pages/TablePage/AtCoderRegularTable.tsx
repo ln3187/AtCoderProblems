@@ -105,6 +105,7 @@ const AtCoderRegularTableSFC: React.FC<Props> = (props) => {
       Math.max(problemStatus.size, currentCount),
     0
   );
+  console.log(maxProblemCount);
   const header = ["A", "B", "C", "D", "E", "F", "F2"].slice(0, maxProblemCount);
   return (
     <Row className="my-4">
@@ -139,6 +140,11 @@ const AtCoderRegularTableSFC: React.FC<Props> = (props) => {
             }
             columnClassName={(_, { problemStatus }: OneContest): string => {
               const problem = problemStatus.get(c);
+              const st = !problem ? "table-problem-empty" : problem.cellColor;
+              if (st == "table-success-language") {
+                console.log(problem);
+                console.log("sol!");
+              }
               return [
                 "table-problem",
                 !problem ? "table-problem-empty" : problem.cellColor,
